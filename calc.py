@@ -3,7 +3,7 @@ from tkinter import font
 
 
 root = tk.Tk()
-root.title("Calculadora Python Moderna")
+root.title("calculatrice Python")
 root.geometry("320x500")
 root.resizable(False, False)
 root.configure(bg="#2E2E2E") 
