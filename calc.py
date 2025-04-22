@@ -1,29 +1,29 @@
 import tkinter as tk
 from tkinter import font
 
-# Configuração da janela
+
 root = tk.Tk()
 root.title("Calculadora Python Moderna")
 root.geometry("320x500")
 root.resizable(False, False)
-root.configure(bg="#2E2E2E")  # Fundo escuro
+root.configure(bg="#2E2E2E") 
 
-# Fontes personalizadas
+
 fonte_display = font.Font(family="Arial", size=24, weight="bold")
 fonte_botoes = font.Font(family="Arial", size=14, weight="bold")
 
-# Cores
+
 cor_display = "#3D3D3D"
 cor_botoes_numeros = "#5A5A5A"
 cor_botoes_operadores = "#FF9500"
 cor_botoes_especiais = "#A5A5A5"
 cor_texto = "#FFFFFF"
 
-# Variável para armazenar a expressão
+
 expressao = ""
 entrada_texto = tk.StringVar()
 
-# Funções
+
 def adicionar_caractere(caractere):
     global expressao
     expressao += str(caractere)
@@ -44,7 +44,7 @@ def limpar():
     expressao = ""
     entrada_texto.set("")
 
-# Display (campo de entrada)
+
 display = tk.Entry(
     root,
     textvariable=entrada_texto,
@@ -57,7 +57,7 @@ display = tk.Entry(
 )
 display.grid(row=0, column=0, columnspan=4, padx=10, pady=20, ipady=10, sticky="nsew")
 
-# Botões
+
 botoes = [
     ('C', 1, 0, cor_botoes_especiais), ('⌫', 1, 1, cor_botoes_especiais), ('%', 1, 2, cor_botoes_operadores), ('/', 1, 3, cor_botoes_operadores),
     ('7', 2, 0, cor_botoes_numeros), ('8', 2, 1, cor_botoes_numeros), ('9', 2, 2, cor_botoes_numeros), ('*', 2, 3, cor_botoes_operadores),
@@ -66,7 +66,7 @@ botoes = [
     ('0', 5, 0, cor_botoes_numeros, 2), ('.', 5, 2, cor_botoes_numeros), ('=', 5, 3, cor_botoes_operadores)
 ]
 
-# Função para criar botões
+
 def criar_botao(texto, linha, coluna, cor, colspan=1):
     botao = tk.Button(
         root,
@@ -82,14 +82,14 @@ def criar_botao(texto, linha, coluna, cor, colspan=1):
     botao.grid(row=linha, column=coluna, columnspan=colspan, sticky="nsew", padx=5, pady=5, ipady=15)
     return botao
 
-# Adicionando botões à interface
+
 for botao in botoes:
     if len(botao) == 4:
         criar_botao(botao[0], botao[1], botao[2], botao[3])
     else:
         criar_botao(botao[0], botao[1], botao[2], botao[3], colspan=botao[4])
 
-# Botão de limpar caractere (⌫)
+
 def apagar_ultimo():
     global expressao
     expressao = expressao[:-1]
@@ -106,7 +106,7 @@ tk.Button(
     activebackground="#777777"
 ).grid(row=1, column=1, sticky="nsew", padx=5, pady=5, ipady=15)
 
-# Ajuste de grid
+
 for i in range(6):
     root.grid_rowconfigure(i, weight=1)
 for i in range(4):
